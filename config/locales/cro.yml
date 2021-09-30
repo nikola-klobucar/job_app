@@ -1,0 +1,26 @@
+cro:
+  jan: "Siječanj"
+  feb: "Veljača"
+  mar: "Ožujak"
+  apr: "Travanj"
+  may: "Svibanj"
+  jun: "Lipanj"
+  jul: "Srpanj"
+  aug: "Kolovoz"
+  sep: "Rujan"
+  oct: "Listopad"
+  nov: "Studeni"
+  dec: "Prosinac"
+  activerecord:
+    errors:
+      models:
+        ad:
+          attributes:
+            name:
+              blank: "ne smije biti prazno"
+            employer_name:
+              blank: "ne smije biti prazno"
+            employer_email:
+              blank: "ne smije biti prazno"
+            category:
+              blank: "ne smije biti prazna"

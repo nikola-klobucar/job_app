@@ -1,0 +1,30 @@
+<% if job.errors.any? %>
+  <div id="erro_explanation">
+    <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
+
+    <ul>
+      <% job.errors.full_messages.each do |message| %>
+        <li><%=message%></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= simple_form_for(job) do |j| %>
+
+  <%= j.input :first_name, label: "Ime" %>
+
+  <%= j.input :last_name, label: "Prezime" %>
+
+  <%= j.input :email, label: "Ime poslodavca" %>
+
+  <%= j.input :phone, label: "Email poslodavca" %>
+
+  <%= j.input :address, label: "Adresa"%>
+
+  <%= j.input :qualification, label: "Kvalifikacija: ", collection: ["NSS", "SSS", "VŠS", "VSS"]%>
+
+  <%= j.button :submit, class: "btn btn-primary" %>
+
+  <%= link_to 'Natrag', ad_path %>
+<% end %>

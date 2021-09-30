@@ -1,0 +1,31 @@
+<% if ad.errors.any? %>
+  <div id="erro_explanation">
+    <h2><%= pluralize(@ad.errors.count, "error") %> prohibited this ad from being saved:</h2>
+
+    <ul>
+      <% ad.errors.full_messages.each do |message| %>
+        <li><%=message%></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= simple_form_for(ad) do |a| %>
+
+  <%= a.input :name, label: "Naziv posla" %>
+
+  <%= a.input :body, label: "Opis" %>
+
+  <%= a.input :employer_name, label: "Ime poslodavca" %>
+
+  <%= a.input :employer_email, label: "Email poslodavca" %>
+
+  <%= a.input :category, label: "Kategorija", collection: ["IT", "HR", "Edukacija", "Prirodne znanosti"]%>
+
+  <%= a.input :time_period, label: "Oglas vrijedi do: ", as: :date, order: [:day, :month, :year],
+  :use_month_names => [t(:jan), t(:feb), t(:mar), t(:apr), t(:may), t(:jun), t(:jul), t(:aug), t(:sep), t(:oct), t(:nov), t(:dec)]%>
+
+  <%= a.button :submit, class: "btn btn-primary" %>
+
+  <%= link_to 'Back', ads_path %>
+<% end %>

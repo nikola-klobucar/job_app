@@ -1,0 +1,57 @@
+<% provide(:title, @ad.name) %>
+<header>
+    <h1><%= @ad.name%></h1>
+    <%= render 'layouts/show_headers' %>
+</header>
+
+
+<div>
+    <p><%= @ad.body %></p>
+
+    <p><%= @ad.employer_name %></p>
+
+    <p><%= @ad.employer_email %></p>
+
+    <p><%= @ad.category %></p>
+
+    <p><%= time_format(@ad.time_period) %></p>
+</div>
+
+<h2>Korisnici prijavljeni za posao</h2>
+
+<% if @ad.jobs.any? %>
+    <table class="table table.striped">
+        <thead>
+            <tr>
+                <th>Ime i Prezime</th>
+                <th>Email</th>
+                <th>Telefonski broj</th>
+                <th>Adresa</th>
+                <th>Kvalifikacija</th>
+                <th colspan="3"></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @ad.jobs.each do |job| %>
+                <tr>
+                    <td><%= link_to "#{job.first_name} #{job.last_name}", job_path(job) %></td>
+                    <td><%= job.email %></td>
+                    <td><%= job.phone %></td>
+                    <td><%= job.address %></td>
+                    <td><%= job.qualification %></td>
+                </tr>
+            <%end%>
+        </tbody>
+    </table>
+<% else %>
+    <p><%= @ad.name%> nema prijavljenih ljudi</p>
+<% end %>
+
+<p>
+    <%= link_to 'Ažurirajte oglas za posao', edit_ad_path(@ad) %> | 
+    <%= link_to 'Izbrišite oglas za posao',
+     ad_path(@ad), method: :delete,
+      data: {confirm: "Jeste li sigurni da želite obrisati posao?"} %>
+</p>
+

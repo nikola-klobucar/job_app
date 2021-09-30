@@ -1,0 +1,35 @@
+<header>
+    <h1><%= @job.first_name%> <%= @job.last_name%></h1>
+    <%= render 'layouts/show_headers' %>
+</header>
+
+
+<table class="table table.striped">
+    <thead>
+        <tr>
+            <th>Ime i Prezime</th>
+            <th>Email</th>
+            <th>Telefonski broj</th>
+            <th>Adresa</th>
+            <th>Kvalifikacija</th>
+            <th colspan="3"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td><%= link_to "#{@job.first_name} #{@job.last_name}", job_path(@job) %></td>
+            <td><%= @job.email %></td>
+            <td><%= @job.phone %></td>
+            <td><%= @job.address %></td>
+            <td><%= @job.qualification %></td>
+        </tr>
+    </tbody>
+</table>
+
+<p>
+    <%= link_to 'Izbrišite prijavu za posao',
+     job_path(@job), method: :delete,
+      data: {confirm: "Jeste li sigurni da želite prijavu za posao?"} %>
+</p>
+
