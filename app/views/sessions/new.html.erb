@@ -1,0 +1,22 @@
+<h1>Prijavite se</h1>
+
+
+<div class="row">
+  <div class="col-md-2 col-md-offset-3">
+
+        <%= form_tag sessions_path do %>
+
+            <%= label_tag "Email" %>
+            <%= text_field_tag :email %>
+
+            <%= label_tag "Password" %>
+            <%= text_field_tag :password %>
+
+            <%= label_tag "Password confirmation" %>
+            <%= text_field_tag :password_confirmation %>
+
+            <%= submit_tag "Prijavite se" %>
+
+        <%end%>
+    </div>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_30_130750) do
+ActiveRecord::Schema.define(version: 2021_10_01_112805) do
 
   create_table "ads", force: :cascade do |t|
     t.string "name"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2021_09_30_130750) do
     t.date "time_period"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_ads_on_user_id"
   end
 
   create_table "jobs", force: :cascade do |t|
@@ -33,8 +35,21 @@ ActiveRecord::Schema.define(version: 2021_09_30_130750) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "ad_id", null: false
+    t.integer "user_id", null: false
     t.index ["ad_id"], name: "index_jobs_on_ad_id"
+    t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "ads", "users"
   add_foreign_key "jobs", "ads"
+  add_foreign_key "jobs", "users"
 end

@@ -14,6 +14,11 @@ cro:
   activerecord:
     errors:
       models:
+        user:
+          attributes:
+            password:
+              blank: ""
+              too_short: "ne smije biti manje od 5 znamenaka"
         ad:
           attributes:
             name:
@@ -24,3 +29,7 @@ cro:
               blank: "ne smije biti prazno"
             category:
               blank: "ne smije biti prazna"
+        job:
+          attributes:
+            applicant:
+              required: "mora biti prijavljen"

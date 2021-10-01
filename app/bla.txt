@@ -1,0 +1,47 @@
+Simple form for za usera
+
+<%= simple_form_for(user) do |u| %>
+
+  <%= u.input :first_name, label: "Ime" %>
+
+  <%= u.input :last_name, label: "Prezime" %>
+
+  <%= u.input :email, label: "Email" %>
+
+  <%= u.input :password, label: "Zaporka" %>
+
+  <%= u.input :password_confirmation, label: "Potvrdite password"%>
+
+  <%= u.button :submit, class: "btn btn-primary" %>
+
+  <%= link_to 'Natrag', root_path %>
+<% end %>
+
+
+
+Alternativa
+<%= form_tag sessions_path, method: 'post', local: true do %>
+
+    <%= label_tag "Email" %>
+    <%= text_field_tag :email %>
+    <%= label_tag "Password" %>
+    <%= text_field_tag :password %>
+    <%= label_tag "Password confirmation" %>
+    <%= text_field_tag :password_confirmation %>
+    <%= submit_tag "Prijavite se" %>
+
+<%end%>
+
+
+        <% if logged_in? %>
+          <li class="nav-item">
+            <%= link_to 'Registrirajte se', signup_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Prijavite se', login_path, class: "nav-link" %>
+          </li>
+        <%else%>
+          <li class="nav-item">
+            <%= link_to 'Odjavite se', logout_path, method: :delete, class: "nav-link" %>
+          </li>
+        <% end %>

@@ -7,5 +7,6 @@ FactoryBot.define do
     address { "MyString" }
     qualification { "MyString" }
     ad {build(:ad)}
+    applicant {build(:user)}
   end
 end

@@ -1,18 +1,5 @@
 <header>
     <h1>Svi oglasi za posao</h1>
-    <div class= "col-sm-3 pull-right">
-        <ul class = "action">
-            <li><%= link_to "Novi oglas za posao", new_ad_path, class: "new" %></li>
-        </ul>
-
-        <ul class="nav navbar-nav">
-          <li class="<%= current_page?("/") ? 'active' : '' %>"><%= link_to "Home", root_path %></li>
-          <li class="<%= current_page?("/ads") ? 'active' : '' %>"><%= link_to "Oglasi", ads_path %></li>
-          <li class="<%= current_page?("/") ? 'active' : '' %>"><%= link_to "Registriraj se", root_path %></li>
-          <li class="<%= current_page?("/") ? 'active' : '' %>"><%= link_to "Prijavi se", root_path %></li>
-          <li class="<%= current_page?("/") ? 'active' : '' %>"><%= link_to "Odjavi se", root_path %></li>
-        </ul>
-    </div>
 </header>
 
 
@@ -24,5 +11,6 @@
         <p><%= ad.employer_email %></p>
         <p><%= ad.category %></p>
         <p><%= time_format(ad.time_period) %></p>
+        <p><%= link_to "Pridruženi oglasi za poslove od #{ad.employer.first_name} #{ad.employer.last_name}"%></p>
     </div>
 <%end%>
