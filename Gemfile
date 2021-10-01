@@ -30,8 +30,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'awesome_print', '~> 1.9', '>= 1.9.2'
 gem 'rexml'
-gem 'bootstrap', '~> 5.1.0'
-gem 'jquery-rails'
+
 gem "font-awesome-rails"
 gem 'simple_form'
 
