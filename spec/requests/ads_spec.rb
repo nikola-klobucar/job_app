@@ -1,7 +1,21 @@
 require 'rails_helper'
 
-RSpec.describe "Ads", type: :request do
-  describe "GET /index" do
-    pending "add some examples (or delete) #{__FILE__}"
+RSpec.describe AdsController, type: :controller do
+  render_views
+  describe "GET index" do
+    before(:each) do
+      @ad = build(:ad)
+    end
+    
+    it "should have a link to the job page" do
+      render :template => "widgets/widget.html.erb"
+
+      expect(rendered).to render_template("index")
+    end
+
+    it "should render index" do
+      get :index
+      expect(response).to redirect_to(ad_path(@ad))
+    end
   end
 end

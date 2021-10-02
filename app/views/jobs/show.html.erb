@@ -17,7 +17,7 @@
 
     <tbody>
         <tr>
-            <td><%= link_to "#{@job.first_name} #{@job.last_name}", job_path(@job) %></td>
+            <td><%= link_to "#{@job.first_name} #{@job.last_name}", user_path(@job.applicant) %></td>
             <td><%= @job.email %></td>
             <td><%= @job.phone %></td>
             <td><%= @job.address %></td>

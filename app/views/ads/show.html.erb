@@ -1,56 +1,59 @@
 <% provide(:title, @ad.name) %>
 <header>
-    <h1><%= @ad.name%></h1>
+    <h1><%="Ime oglasa: #{@ad.name}"%></h1>
 </header>
 
 
 <div>
-    <p><%= @ad.body %></p>
+    <p><%= "Opis: #{@ad.body}" %></p>
 
-    <p><%= @ad.employer_name %></p>
+    <p><%= "Ime poslodavca:  #{@ad.employer_name}" %></p>
 
-    <p><%= @ad.employer_email %></p>
+    <p><%= "Email poslodavca #{@ad.employer_email}" %></p>
 
-    <p><%= @ad.category %></p>
+    <p><%= "Kategorija #{@ad.category}" %></p>
 
-    <p><%= time_format(@ad.time_period) %></p>
+    <%= render 'expired_date', ad: @ad %>
 </div>
 
-<h2>Korisnici prijavljeni za posao</h2>
+<% if current_user == @ad.employer%>
 
-<% if @ad.jobs.any? %>
-    <table class="table table.striped">
-        <thead>
-            <tr>
-                <th>Ime i Prezime</th>
-                <th>Email</th>
-                <th>Telefonski broj</th>
-                <th>Adresa</th>
-                <th>Kvalifikacija</th>
-                <th colspan="3"></th>
-            </tr>
-        </thead>
+    <h2>Korisnici prijavljeni za posao</h2>
 
-        <tbody>
-            <% @ad.jobs.each do |job| %>
+    <% if @ad.jobs.any? %>
+        <table class="table table.striped">
+            <thead>
                 <tr>
-                    <td><%= link_to "#{job.first_name} #{job.last_name}", job_path(job) %></td>
-                    <td><%= job.email %></td>
-                    <td><%= job.phone %></td>
-                    <td><%= job.address %></td>
-                    <td><%= job.qualification %></td>
+                    <th>Ime i Prezime</th>
+                    <th>Email</th>
+                    <th>Telefonski broj</th>
+                    <th>Adresa</th>
+                    <th>Kvalifikacija</th>
+                    <th colspan="3"></th>
                 </tr>
-            <%end%>
-        </tbody>
-    </table>
+            </thead>
+                <tbody>
+                    <% @ad.jobs.each do |job| %>
+                        <tr>
+                            <td><%= link_to "#{job.first_name} #{job.last_name}", job_path(job) %></td>
+                            <td><%= job.email %></td>
+                            <td><%= job.phone %></td>
+                            <td><%= job.address %></td>
+                            <td><%= job.qualification %></td>
+                        </tr>
+                    <%end%>
+                </tbody>
+        </table>
+    <% end %>
+    <p>
+        <%= link_to 'Ažurirajte oglas za posao', edit_ad_path(@ad) %> | 
+        <%= link_to 'Izbrišite oglas za posao',
+        ad_path(@ad), method: :delete,
+        data: {confirm: "Jeste li sigurni da želite obrisati posao?"} %>
+    </p>
 <% else %>
-    <p><%= @ad.name%> nema prijavljenih ljudi</p>
+    <%if logged_in? && current_user.jobs.map{|job| job.ad.id != @ad.id}.all?%>
+        <p><%= link_to "Prijavite se za posao", new_job_path %></p>
+    <% end %>
 <% end %>
-
-<p>
-    <%= link_to 'Ažurirajte oglas za posao', edit_ad_path(@ad) %> | 
-    <%= link_to 'Izbrišite oglas za posao',
-     ad_path(@ad), method: :delete,
-      data: {confirm: "Jeste li sigurni da želite obrisati posao?"} %>
-</p>
 

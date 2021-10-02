@@ -6,5 +6,6 @@ FactoryBot.define do
     employer_email { "MyString" }
     category { "MyString" }
     time_period { "2021-09-30" }
+    employer {build(:user)}
   end
 end

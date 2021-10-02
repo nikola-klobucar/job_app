@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :set_user, only: [:show, :edit]
+    before_action :set_user, only: [:show, :edit, :update, :destroy]
 
     def index
         @users = User.all
@@ -31,7 +31,13 @@ class UsersController < ApplicationController
     end
 
     def update
-        
+        if @user.update(user_params)
+            flash[:notice] = "Profil ažuriran"
+            redirect_to current_user
+        else
+            flash.now[:alert] = "Oglas neusješno ažuriran"
+            render "edit"
+        end
     end
 
 
@@ -43,5 +49,8 @@ class UsersController < ApplicationController
 
         def set_user
             @user = User.find(params[:id])
+            rescue ActiveRecord::RecordNotFound
+                flash[:alert] = "Stranica koju ste zatražili ne postoji"
+                redirect_to current_user
         end
 end

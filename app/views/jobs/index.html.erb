@@ -1,30 +1,26 @@
-<header>
-    <h1>Svi oglasi za posao</h1>
-    <div class= "col-sm-3 pull-right">
-        <ul class = "action">
-            <li><%= link_to "Novi oglas za posao", new_job_path, class: "new" %></li>
-        </ul>
-
-        <ul class="nav navbar-nav">
-          <li class="<%= current_page?("/") ? 'active' : '' %>"><%= link_to "Home", root_path %></li>
-          <li class="<%= current_page?("/jobs") ? 'active' : '' %>"><%= link_to "Oglasi", jobs_path %></li>
-          <li class="<%= current_page?("/") ? 'active' : '' %>"><%= link_to "Registriraj se", root_path %></li>
-          <li class="<%= current_page?("/") ? 'active' : '' %>"><%= link_to "Prijavi se", root_path %></li>
-          <li class="<%= current_page?("/") ? 'active' : '' %>"><%= link_to "Odjavi se", root_path %></li>
-        </ul>
-    </div>
+ <header>
+    <h1>Sve ponude za posao</h1>
 </header>
-
-
-<% @jobs.each do |job| %>
-    <div>
-        <h4><%= link_to "#{job.first_name} #{job.last_name}" %></h4>
-        <p><%= job.email %></p>
-        <p><%= job.phone %></p>
-        <p><%= job.address %></p>
-        <p><%= job.qualification %></p>
-        <p><%= link_to "Pridruženi oglas za posao od #{job.first_name} #{job.last_name}", 
-        ad_path(job.ad) %></p>
-    </div>
-<%end%>
+ 
+ 
+ <table class="table table.striped">
+        <tr>
+            <th>Ime i Prezime</th>
+            <th>Email</th>
+            <th>Telefon</th>
+            <th>Adresa</th>
+            <th>Kvalifikacija</th>
+        </tr>
+            <tbody>
+                <% @jobs.each do |job| %>
+                    <tr>
+                            <td><%= link_to "#{job.first_name} #{job.last_name}", user_path(job.applicant) %></td>
+                            <td><%= job.email %></td>
+                            <td><p><%= job.phone %></p></td>
+                            <td><p><%= job.address %></p></td>
+                            <td><p><%= job.qualification %></p></td>
+                    </tr>
+                <%end%>
+            </tbody>
+</table> 
 

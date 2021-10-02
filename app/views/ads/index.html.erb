@@ -3,14 +3,25 @@
 </header>
 
 
-<% @ads.each do |ad| %>
-    <div>
-        <h4><%= link_to ad.name, ad_path(ad) %></h4>
-        <p><%= ad.body %></p>
-        <h4><%= ad.employer_name %></h4>
-        <p><%= ad.employer_email %></p>
-        <p><%= ad.category %></p>
-        <p><%= time_format(ad.time_period) %></p>
-        <p><%= link_to "Pridruženi oglasi za poslove od #{ad.employer.first_name} #{ad.employer.last_name}"%></p>
-    </div>
-<%end%>
+ <table class="table table.striped">
+        <tr>
+            <th>Ime Oglasa</th>
+            <th>Opis</th>
+            <th>Ime poslodavca</th>
+            <th>Email poslodavca</th>
+            <th>Kategorija</th>
+            <th>Oglas vrijedi do:</th>
+        </tr>
+            <tbody>
+                <% @ads.each do |ad| %>
+                    <tr>
+                            <td><%= link_to ad.name, ad_path(ad) %></td>
+                            <td><%= ad.body %></td>
+                            <td><p><%= ad.employer_name %></p></td>
+                            <td><p><%= ad.employer_email %></p></td>
+                            <td><p><%= ad.category %></p></td>
+                            <td><%= render 'expired_date', ad:ad %></td>
+                    </tr>
+                <%end%>
+            </tbody>
+</table> 

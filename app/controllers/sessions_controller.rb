@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
             redirect_to @user
         else
             flash.now[:danger] = "Neispravna kombinacija emaila/zaporke"
-            render login_path
+            render :new
         end
     end
 

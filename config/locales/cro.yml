@@ -13,6 +13,8 @@ cro:
   dec: "Prosinac"
   activerecord:
     errors:
+      messages:
+        record_invalid: ""
       models:
         user:
           attributes:
@@ -29,7 +31,26 @@ cro:
               blank: "ne smije biti prazno"
             category:
               blank: "ne smije biti prazna"
+            employer:
+              required: "mora postojati"
         job:
           attributes:
+            first_name:
+              blank: "mora sadržavati polje"
+            last_name:
+              blank: "mora sadržavati polje"
+            address:
+              blank: "mora sadržavati polje"
+            qualification:
+              blank: "mora sadržavati polje"
+            email:
+              blank: "mora sadržavati polje"
+              invalid: "mora biti ispravnog formata"
+            phone:
+              blank: "mora sadržavati polje"
+              too_short: "ima premalo znamenaka"
+              not_a_number: "sadrži nedpuštene znamenke. Jedno brojevi te '+' su dopušteni."
+            ad: 
+              required: "mora biti povezan s oglasnom za posao"
             applicant:
               required: "mora biti prijavljen"

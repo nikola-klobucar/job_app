@@ -1,0 +1,5 @@
+    <% if ad.time_period > DateTime.now%>
+        <p><%= "#{time_format(ad.time_period)}" %></p>
+    <%else%>
+        <p><%= "Istekao" %></p>
+    <% end %>

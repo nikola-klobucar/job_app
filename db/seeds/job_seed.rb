@@ -3,6 +3,7 @@ require 'faker'
 puts "Creating jobs"
 
 ads = Ad.all
+applicant = User.all[4..]
 
 ads.each do |ad|
     5.times do
@@ -12,8 +13,9 @@ ads.each do |ad|
             email: Faker::Internet.email,
             phone: Faker::PhoneNumber.cell_phone_in_e164,
             address: Faker::Address.street_address,
-            qualification: Faker::Job.education_level,
-            ad: ad
+            qualification: ["NSS", "SSS", "VŠS", "VSS"].sample,
+            ad: ad,
+            applicant: applicant.sample
         )
     end
 end

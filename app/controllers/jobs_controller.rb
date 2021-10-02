@@ -6,17 +6,20 @@ class JobsController < ApplicationController
     end
 
     def new
-        @job = Job.new
+        if session[:ad_id] == nil
+            redirect_to root_url
+        else
+            @job = Job.new()
+        end
     end
 
     def create
-        @job = Job.new(job_params)
-
+        @job = Job.new(job_params.merge(applicant: current_user, ad: current_ad))
         if @job.save
-            flash[:notice] = "Prijava za posao stvoren"
+            flash[:notice] = "Prijava za posao uspješno stvorena"
             redirect_to @job
         else
-            flash.now[:alert] = "Prijava za posao nije uspješno stvoren"
+            flash.now[:alert] = "Prijava za posao nije uspješno stvorena"
             render "new"
         end
     end
@@ -34,14 +37,14 @@ class JobsController < ApplicationController
     private
 
         def job_params
-            params.require(:job).permit(:name, :body, :employer_name, :employer_email, :category, :time_period)
+            params.require(:job).permit(:first_name, :last_name, :email, :phone, :address, :qualification, :applicant)
         end
 
         def set_job
             @job = Job.find(params[:id])
             rescue ActiveRecord::RecordNotFound
                 flash[:alert] = "Stranica koju ste zatražili ne postoji"
-                redirect_to jobs_url
+                redirect_to @job.employer
 
         end
 end
