@@ -8,11 +8,7 @@ class AdsController < ApplicationController
     end
 
     def new
-        if current_ad == nil
-            redirect_to root_url
-        else
-            @ad = Ad.new()
-        end
+        @ad = Ad.new()
     end
 
     def create
