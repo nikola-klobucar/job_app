@@ -16,6 +16,14 @@ class JobsController < ApplicationController
     def create
         @job = Job.new(job_params.merge(applicant: current_user, ad: current_ad))
         if @job.save
+            ApplicantMailer.with(
+                job: @job
+            ).job_created.deliver_later
+            
+            EmployerMailer.with(
+                job: @job
+            ).job_created.deliver_later
+
             flash[:notice] = "Prijava za posao uspješno stvorena"
             redirect_to @job
         else
