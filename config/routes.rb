@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :ads
   resources :jobs
-  resources :users, only:[:create, :show, :edit, :update, :index]
+  resources :users, except: [:new]
 
   get "signup", to: "users#new", as: "signup"
   get "login", to: "sessions#new", as: "login"

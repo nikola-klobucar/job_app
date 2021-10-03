@@ -5,6 +5,7 @@ class EmployerMailer < ApplicationMailer
   #
   #   en.employer_mailer.job_created.subject
   #
+
   def job_created
     @job = params[:job]
     mail to: Job.last.ad.employer_email, subject: "Nova prijava za posao"

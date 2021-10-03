@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_01_112805) do
+ActiveRecord::Schema.define(version: 2021_10_03_194344) do
 
   create_table "ads", force: :cascade do |t|
     t.string "name"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2021_10_01_112805) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "ads", "users"
-  add_foreign_key "jobs", "ads"
-  add_foreign_key "jobs", "users"
+  add_foreign_key "ads", "users", on_delete: :cascade
+  add_foreign_key "jobs", "ads", on_delete: :cascade
+  add_foreign_key "jobs", "users", on_delete: :cascade
 end

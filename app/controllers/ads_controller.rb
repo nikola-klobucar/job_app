@@ -25,11 +25,10 @@ class AdsController < ApplicationController
 
     def show
         remember(@ad)
-        current_ad
     end
 
     def edit
-        if current_user != @user
+        if current_user != @ad.employer
             redirect_to current_user
         end
     end
@@ -45,9 +44,10 @@ class AdsController < ApplicationController
     end
 
     def destroy
+        kill_ad_session
         @ad.destroy
-        flash[:alert] = "Oglas za posao izbrisan uspješno"
-        redirect_to ads_url
+        flash[:success] = "Oglas za posao izbrisan uspješno"
+        redirect_to root_url
     end
 
 
@@ -64,4 +64,5 @@ class AdsController < ApplicationController
                 redirect_to ads_url
 
         end
+      
 end

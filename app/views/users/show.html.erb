@@ -66,7 +66,7 @@
         <p>
             <%= link_to 'Ažurirajte Vaš profil', edit_user_path(@user) %> | 
             <%= link_to 'Izbrišite Vaš profil',
-            user_path(@user), method: :delete,
+            user_path, method:  :delete,
             data: {confirm: "Jeste li sigurni da želite Vaš profil??"} %>
         </p>
     <% end %>

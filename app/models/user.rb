@@ -1,8 +1,8 @@
 class User < ApplicationRecord
     has_secure_password
 
-    has_many :jobs, inverse_of: 'applicant'
-    has_many :ads, inverse_of: 'employer'
+    has_many :jobs, inverse_of: 'applicant', dependent: :destroy
+    has_many :ads, inverse_of: 'employer', dependent: :destroy
 
     validates :first_name, :last_name, presence: true
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

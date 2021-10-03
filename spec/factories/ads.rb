@@ -3,9 +3,9 @@ FactoryBot.define do
     name { "MyString" }
     body { "MyText" }
     employer_name { "MyString" }
-    employer_email { "MyString" }
+    employer_email { "ads@bar.com" }
     category { "MyString" }
     time_period { "2021-09-30" }
-    employer {build(:user)}
+    employer {create(:user)}
   end
 end

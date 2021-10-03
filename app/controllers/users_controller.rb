@@ -42,6 +42,12 @@ class UsersController < ApplicationController
         end
     end
 
+    def destroy
+        @user.destroy
+        flash[:success] = "Uspješno ste izbrisali profil."
+        redirect_to root_url
+    end
+
 
     private
 

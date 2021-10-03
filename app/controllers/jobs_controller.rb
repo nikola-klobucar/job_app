@@ -1,10 +1,6 @@
 class JobsController < ApplicationController
     before_action :set_job, only:[:show, :update, :destroy]
 
-    def index
-        @jobs = Job.all
-    end
-
     def new
         if session[:ad_id] == nil
             redirect_to root_url
@@ -38,7 +34,7 @@ class JobsController < ApplicationController
     def destroy
         @job.destroy
         flash[:alert] = "Prijava za posao izbrisana uspješno"
-        redirect_to jobs_url
+        redirect_to root_url
     end
 
 

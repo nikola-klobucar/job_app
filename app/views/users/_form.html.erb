@@ -1,14 +1,3 @@
-<% if user.errors.any? %>
-  <div id="erro_explanation">
-    <h2><%= pluralize(@ad.errors.count, "error") %> prohibited this ad from being saved:</h2>
-
-    <ul>
-      <% user.errors.full_messages.each do |message| %>
-        <li><%=message%></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
 
 <%= simple_form_for(user) do |u| %>
 
