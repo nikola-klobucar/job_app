@@ -1,3 +1,15 @@
-Nova prijava za posao
-
+Nova prijava za posao!
+===============================================
+Poštvani,
+    
 dobili ste novu prijavu za posao! Kliknite na <%= link_to "link", user_url(@job.applicant) %> da vidite detalje potencijalnog posloprimca.
+
+
+Detalji za prijavu potencijalnog posloprimca:
+--------------------------
+
+Ime: <%= @job.first_name %>
+Prezime: <%= @job.last_name %>
+Email: <%= @job.email %>
+Adresa: <%= @job.address %>
+Phone: <%= @job.phone %>

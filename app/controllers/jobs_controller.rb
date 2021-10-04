@@ -21,7 +21,7 @@ class JobsController < ApplicationController
             ).job_created.deliver_later
 
             flash[:notice] = "Prijava za posao uspješno stvorena"
-            redirect_to @job
+            redirect_to @job.applicant
         else
             flash.now[:alert] = "Prijava za posao nije uspješno stvorena"
             render "new"

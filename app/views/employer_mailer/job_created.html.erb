@@ -1,7 +1,24 @@
-<h1>Nova prijava za posao</h1>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h3>Nova prijava za posao!</h3>
 
-Poštovani,
+    <p>Poštvani,
+    
+    dobili ste novu prijavu za posao! Kliknite na <%= link_to "link", user_url(@job.applicant) %> da vidite detalje potencijalnog posloprimca.</p>
+    <p>
 
-<p>
-dobili ste novu prijavu za posao! Kliknite na <%= link_to "link", user_url(@job.applicant) %> da vidite detalje potencijalnog posloprimca.
-</p>
+    Detalji za prijavu potencijalnog posloprimca<br>
+    --------------------------
+    </p>
+    <p>Ime: <%= @job.first_name %></p>
+    <p>Prezime: <%= @job.last_name %></p>
+    <p>Email: <%= @job.email %></p>
+    <p>Adresa: <%= @job.address %></p>
+    <p>Phone: <%= @job.phone %></p>
+    <p>
+        </p>
+  </body>
+</html>
