@@ -9,7 +9,6 @@ class AdsController < ApplicationController
     end
 
     def new
-        byebug
         if current_user
             @ad = Ad.new()
         else
