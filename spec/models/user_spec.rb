@@ -49,28 +49,4 @@ RSpec.describe User, type: :model do
       end
     end
   end
-
-  context.describe "dependency with jobs and ads" do
-    it "has a depencency with ads" do
-      user = User.create(
-        first_name: "foo", 
-        last_name: "bar", 
-        email: "foo@bar.com", 
-        password: "password", 
-        password_confirmation: "password"
-      )
-
-      ad = Ad.create(
-        name: "Lorem",
-        employer_name: "Nikola",
-        employer_email: "foo@bar.com",
-        category: "IT",
-        time_period: "2021-09-30",
-        employer: user
-      )
-
-      user.delete
-      expect(ad).to be_nil
-    end
-  end
 end

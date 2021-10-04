@@ -5,10 +5,15 @@ class AdsController < ApplicationController
     def index
         kill_ad_session
         @ads = Ad.all
+        @ads = @ads.search(params[:q].downcase) if params[:q] && !params[:q].empty?
     end
 
     def new
-        @ad = Ad.new()
+        if current_ad
+            @ad = Ad.new()
+        else
+            redirect_to current_user
+        end
     end
 
     def create

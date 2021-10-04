@@ -10,10 +10,10 @@ class User < ApplicationRecord
     validates :password, presence: true, length: 5..20
     validates :password_confirmation, presence: true, length: 5..20
 
-    def self.search(params)
-        joins(:ads).where("LOWER(first_name) LIKE :term OR LOWER(last_name) LIKE :term OR LOWER(
-            email) LIKE :term OR LOWER(name) LIKE :term OR LOWER(employer_name) LIKE :term", 
-            term: "%#{params}%")
-    end
+    # def self.search(params)
+    #     joins(:ads).where("LOWER(first_name) LIKE :term OR LOWER(last_name) LIKE :term OR LOWER(
+    #         email) LIKE :term OR LOWER(name) LIKE :term OR LOWER(employer_name) LIKE :term", 
+    #         term: "%#{params}%")
+    # end
 
 end

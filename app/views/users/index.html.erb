@@ -1,16 +1,15 @@
 
-
- <table class="table table.striped">
-        <tr>
-            <th>Ime i Prezime</th>
-            <th>Email</th>
-        </tr>
-            <tbody>
-                <% @users.each do |user| %>
-                    <tr>
-                            <td><%= link_to "#{user.first_name} #{user.last_name}", user_path(user) %></td>
-                            <td><%= user.email %></td>
-                    </tr>
-                <%end%>
-            </tbody>
-</table> 
+<body>
+    <table class="table table.striped">
+            <tr>
+                <th>Ime i Prezime</th>
+            </tr>
+                <tbody>
+                    <% @users.each do |user| %>
+                        <tr>
+                                <td><%= link_to "#{user.first_name} #{user.last_name}", user_path(user) %></td>
+                        </tr>
+                    <%end%>
+                </tbody>
+    </table> 
+</body>
