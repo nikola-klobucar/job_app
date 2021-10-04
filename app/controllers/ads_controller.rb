@@ -9,10 +9,11 @@ class AdsController < ApplicationController
     end
 
     def new
-        if current_ad
+        byebug
+        if current_user
             @ad = Ad.new()
         else
-            redirect_to current_user
+            redirect_to root_path
         end
     end
 
