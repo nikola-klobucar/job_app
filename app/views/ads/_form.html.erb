@@ -22,7 +22,7 @@
 
   <%= a.input :category, label: "Kategorija", collection: ["IT", "HR", "Edukacija", "Prirodne znanosti"]%>
 
-  <%= a.input :time_period, label: "Oglas vrijedi do: ", as: :date, order: [:day, :month, :year],
+  <%= a.input :time_period, label: "Oglas vrijedi do:", as: :date, order: [:day, :month, :year],
   :use_month_names => [t(:jan), t(:feb), t(:mar), t(:apr), t(:may), t(:jun), t(:jul), t(:aug), t(:sep), t(:oct), t(:nov), t(:dec)]%>
 
   <%= a.button :submit, class: "btn btn-primary" %>
