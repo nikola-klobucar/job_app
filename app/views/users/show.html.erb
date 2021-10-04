@@ -32,10 +32,12 @@
         </tbody>
     </table>
 
-    <% if current_user == @user%>
+<% else %>
 
+    <p><%= @user.first_name%> nema objavljenih poslova</p>
 
-        <table class="table table.striped">
+    <% if current_user == @user %>
+                <table class="table table.striped">
             <thead>
                 <tr>
                     <th>Prijavljeni oglas</th>
@@ -62,13 +64,6 @@
             </tbody>
         </table>
 
-    <% end %>
-
-<% else %>
-
-    <p><%= @user.first_name%> nema objavljenih poslova</p>
-
-    <% if current_user == @user %>
         <p>
             <%= link_to 'Ažurirajte Vaš profil', edit_user_path(current_user) %> | 
             <%= link_to 'Izbrišite Vaš profil',
