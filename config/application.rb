@@ -22,5 +22,6 @@ module JobApp
 
 
     config.i18n.default_locale = :cro
+    config.assets.initialize_on_precompile = false
   end
 end
