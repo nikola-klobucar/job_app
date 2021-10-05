@@ -47,8 +47,8 @@
     <% end %>
     <p>
         <%= link_to 'Ažurirajte oglas za posao', edit_ad_path(@ad) %> | 
-        <%= link_to 'Izbrišite oglas za posao',
-        ad_url(@ad), method: :delete,
+        <%= button_to 'Izbrišite oglas za posao',
+        ad_path(@ad), method: :delete,
         data: {confirm: "Jeste li sigurni da želite obrisati posao?"} %>
     </p>
 <% else %>
